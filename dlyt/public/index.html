@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="title" content="YouTube Video Downloader">
+        <meta name="description" content="Convert a YouTube video to MP3 (Audio) or MP4 (Video)">
+        <meta name="theme-color" content="#6c25be">
+        
+        <!-- Open Graph / Facebook -->
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://www.download-yt.xyz/">
+        <meta property="og:title" content="YouTube Video Downloader">
+        <meta property="og:description" content="Convert a YouTube video to MP3 (Audio) or MP4 (Video)">
+        
+        <!-- Twitter -->
+        <meta property="twitter:card" content="summary_large_image">
+        <meta property="twitter:url" content="https://www.download-yt.xyz/">
+        <meta property="twitter:title" content="YouTube Video Downloader">
+        <meta property="twitter:description" content="Convert a YouTube video to MP3 (Audio) or MP4 (Video)">
+        <link rel="icon" type="image/x-icon" href=/favicon>
+  <title>YouTube Downloader (Junk Version)</title>
+  <style>
+    @font-face {
+  font-family: 'weezer';
+  src: url('/font');
+}
+    body {
+  font-family: 'weezer';
+  background-color: #1d1a1a;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 50px;
+  color: #fff
+}
+
+p {
+  font-size: 24px;
+  text-align: center;
+  margin: 30px 0;
+}
+
+#message {
+  color: #00BFFF;
+}
+
+#countdown {
+  color: #FF4500;
+}
+
+@media only screen and (max-width: 600px) {
+  h1 {
+    font-size: 28px;
+    margin-top: 30px;
+  }
+  
+  p {
+    font-size: 20px;
+    margin: 20px 0;
+  }
+}
+      body {
+        background-color: #f8f8f8;
+      }
+
+      h1 {
+        text-align: center;
+        color: #ff0000;
+      }
+
+      h2 {
+        text-align: center;
+      }
+
+      form {
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #cccccc;
+        border-radius: 10px;
+        max-width: 600px;
+        background-color: #ffffff;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+      }
+
+      select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        font-size: 16px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+      }
+
+      button[type="submit"] {
+        display: block;
+        margin: 0 auto;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        background-color: #ff0000;
+        color: #ffffff;
+        cursor: pointer;
+      }
+      
+      button[type="button"] {
+        display: block;
+        margin: 0 auto;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        background-color: #ff0000;
+        color: #ffffff;
+        cursor: pointer;
+      }
+
+      #download-link {
+        text-align: center;
+        margin-top: 20px;
+      }
+      button {
+        padding: 10px 20px;
+        text-align: center;
+        box-sizing: border-box;
+      }
+      a {
+        display: inline-block;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        background-color: #ff0000;
+        color: #ffffff;
+        text-decoration: none;
+        margin-top: 20px;
+        cursor: pointer;
+      }
+
+      /* Light mode */
+.light-mode {
+  background-color: #f8f8f8;
+  color: #333333;
+}
+
+.light-mode h1 {
+  text-align: center;
+  color: #ff0000;
+}
+
+.light-mode form {
+  border: 1px solid #cccccc;
+  background-color: #ffffff;
+}
+
+.light-mode input[type="text"],
+.light-mode select {
+  border: 1px solid #cccccc;
+}
+
+.light-mode button[type="submit"]
+.light-mode button[type="button"],
+.light-mode a {
+  background-color: #ff0000;
+  color: #ffffff;
+}
+
+/* Dark mode */
+.dark-mode {
+  background-color: #1d1a1a;
+  color: #ffffff;
+}
+
+.dark-mode h1 {
+  color: #fff;
+}
+
+.dark-mode form {
+  border: 1px solid #555555;
+  background-color: #333333;
+}
+
+.dark-mode input[type="text"],
+.dark-mode select {
+  border: 1px solid #555555;
+}
+
+.dark-mode button[type="submit"],
+.dark-mode button[type="button"],
+.dark-mode a {
+  background-color: #555555;
+  color: #ffffff;
+}
+    </style>
+  </head>
+  <body>
+    <h1>YouTube Downloader</h1>
+    <div id="video-title"></div>
+    <form id="download-form">
+        <button onclick="toggleDarkMode()" type="button">Toggle Dark Mode</button>
+      <label for="url-input">Enter a YouTube video URL:</label>
+      <input type="text" id="url-input" name="url" required>
+      <br>
+      <label for="format-select">Select a format:</label>
+      <select id="format-select" name="format">
+        <option value="mp4">Video (MP4)</option>
+        <option value="mp3">Audio (MP3)</option>
+      </select>
+      <br>
+      <button type="submit">Convert</button>
+    </form>
+    <div id="download-link"></div>
+    <h2>Completely ad-free and virus-free!<br>Enjoy free video conversion!</h2>
+    <br><br>
+    <h2>This version of Dalk's YouTube Downloader is apart of the Junk Drawer.</h2>
+    <p>This means this version will not functon exactly like the normal one.</p>
+    <p>Visit our normal downloader at: <a href="https://download-yt.xyz">download-yt.xyz</a></p>
+    <script>
+        const form = document.getElementById('download-form');
+        const linkDiv = document.getElementById('download-link');
+        
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          let newtitle = ""
+          const url = encodeURIComponent(form.url.value);
+          const format = form.format.value;
+          const response = await fetch(`/download?url=${url}&format=${format}`);
+          const vidtitle = document.getElementById('video-title')
+          await fetch(`title?url=${url}`)
+  .then(response => response.text())
+  .then(data => {
+    vidtitle.innerHTML = `<h1>Video Title: ${data.toString()}</h1>`
+    newtitle = data.toString()
+  })
+  .catch(error => console.error(error));
+  const blob = await response.blob();
+          const urlObject = URL.createObjectURL(blob);
+          const link = document.createElement('a');
+link.href = urlObject;
+link.download = `${newtitle}.${format}`;
+link.textContent = `Download ${format.toUpperCase()}: ${newtitle}`;
+
+const tempContainer = document.createElement('div');
+tempContainer.appendChild(link);
+if(vidtitle.innerHTML.includes('Invalid YouTube')) {
+  console.log('Invalid URL')
+} else {
+  linkDiv.innerHTML = tempContainer.innerHTML;
+} 
+
+tempContainer.innerHTML = ""
+        });
+const body = document.querySelector('body');
+      
+function toggleDarkMode() {
+      const body = document.body;
+      body.classList.toggle('dark-mode');
+      const darkModeEnabled = body.classList.contains('dark-mode');
+      document.cookie = `dark=${darkModeEnabled ? 'true' : 'false'}; expires=Fri, 31 Dec 9999 23:59:59 GMT`;
+    }
+
+    // Check if dark mode is enabled from the cookie on page load
+    window.addEventListener('load', () => {
+      const darkModeCookie = document.cookie.split('; ').find(row => row.startsWith('dark='));
+      if (darkModeCookie) {
+        const darkModeEnabled = darkModeCookie.split('=')[1] === 'true';
+        const body = document.body;
+        if (darkModeEnabled) {
+          body.classList.add('dark-mode');
+        } else {
+          body.classList.remove('dark-mode');
+        }
+      }
+    });
+</script> </body>
+</html>
